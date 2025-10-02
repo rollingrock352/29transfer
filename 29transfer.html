@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图奈多重宇宙</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF9BB3',
+                        secondary: '#B6E388',
+                        accent: '#8EA7E9',
+                        light: '#FFF0F5',
+                        dark: '#7286D3'
+                    },
+                    fontFamily: {
+                        cute: ['"Comic Sans MS"', '"Marker Felt"', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            .box-shadow-cute {
+                box-shadow: 0 8px 16px rgba(255, 155, 179, 0.3), 
+                            0 4px 8px rgba(182, 227, 136, 0.2);
+            }
+            .bg-pattern {
+                background-image: radial-gradient(#FFD1DC 2px, transparent 2px),
+                                radial-gradient(#B6E388 2px, transparent 2px);
+                background-size: 40px 40px;
+                background-position: 0 0, 20px 20px;
+                background-color: #FFF0F5;
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+                100% { transform: translateY(0px); }
+            }
+        }
+    </style>
+</head>
+<body class="bg-pattern min-h-screen font-cute overflow-x-hidden">
+    <!-- 装饰元素 -->
+    <div class="fixed -top-10 -left-10 w-40 h-40 bg-primary/30 rounded-full blur-3xl"></div>
+    <div class="fixed top-1/3 -right-16 w-48 h-48 bg-secondary/30 rounded-full blur-3xl"></div>
+    <div class="fixed bottom-20 left-1/4 w-36 h-36 bg-accent/20 rounded-full blur-3xl"></div>
+    
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- 标题区域 - 已修改为"图奈多重宇宙" -->
+        <header class="text-center mb-10 mt-6">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark text-shadow animate-float">
+                图奈多重宇宙
+            </h1>
+            <div class="flex justify-center gap-2 mt-2">
+                <i class="fa fa-star text-primary text-lg animate-pulse"></i>
+                <i class="fa fa-heart text-secondary text-lg animate-pulse" style="animation-delay: 0.2s"></i>
+                <i class="fa fa-moon-o text-accent text-lg animate-pulse" style="animation-delay: 0.4s"></i>
+                <i class="fa fa-heart text-secondary text-lg animate-pulse" style="animation-delay: 0.6s"></i>
+                <i class="fa fa-star text-primary text-lg animate-pulse" style="animation-delay: 0.8s"></i>
+            </div>
+        </header>
+        
+        <!-- 主要内容区域 -->
+        <main class="max-w-5xl mx-auto">
+            <!-- 名字显示框区域 -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-12 px-4">
+                <!-- 左侧名字框 -->
+                <div id="boxA" class="w-full md:w-2/5 h-40 md:h-56 bg-white rounded-2xl p-6 box-shadow-cute flex items-center justify-center transition-all duration-300">
+                    <p class="name-text text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-700 transition-all duration-300"></p>
+                </div>
+                
+                <!-- 中间X符号 -->
+                <div class="text-5xl md:text-6xl font-bold text-primary animate-pulse">
+                    <i class="fa fa-times"></i>
+                </div>
+                
+                <!-- 右侧名字框 -->
+                <div id="boxB" class="w-full md:w-2/5 h-40 md:h-56 bg-white rounded-2xl p-6 box-shadow-cute flex items-center justify-center transition-all duration-300">
+                    <p class="name-text text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-700 transition-all duration-300"></p>
+                </div>
+            </div>
+            
+            <!-- 控制按钮 - 按动时显示"嘉宾匹配中……" -->
+            <div class="text-center">
+                <button id="toggleButton" class="bg-primary hover:bg-primary/80 text-white font-bold py-4 px-10 rounded-full text-xl shadow-lg transform transition hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-primary/50">
+                    <i class="fa fa-random mr-2"></i>开始换乘
+                </button>
+                
+                <!-- 装饰元素 -->
+                <div class="flex justify-center gap-4 mt-6">
+                    <i class="fa fa-sparkles text-secondary text-xl animate-pulse"></i>
+                    <i class="fa fa-globe text-accent text-xl animate-pulse" style="animation-delay: 0.3s"></i>
+                    <i class="fa fa-sparkles text-primary text-xl animate-pulse" style="animation-delay: 0.6s"></i>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 页脚 -->
+        <footer class="text-center text-gray-500 text-sm mt-16 pb-6">
+            <p>图奈多重宇宙 &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // 姓名列表 - 对话框A（已添加新姓名）
+        const listA = [
+            "原初阿尔图",
+            "伟业之国阿尔图",
+            "英雄之国阿尔图",
+            "伯劳森林阿尔图",
+            "新日之坠阿尔图",
+            "日之牢笼阿尔图",
+            "议长",
+            "征伐之国阿尔图",
+            "新日之书阿尔图",
+            "丛林之国阿尔图",
+            "游戏之国阿尔图",
+            "千廊之国阿尔图",
+            "征服之末阿尔图",
+            "任一四魔阿尔图",
+            "教领阿尔图",
+            "摄政王阿尔图"
+        ];
+        
+        // 姓名列表 - 对话框B（已添加新姓名）
+        const listB = [
+            "原初奈费勒",
+            "伟业之国奈费勒",
+            "英雄之国奈费勒",
+            "伯劳森林奈费勒",
+            "新日之坠奈费勒",
+            "日之牢笼奈费勒",
+            "贤王",
+            "征伐之国奈费勒",
+            "新日之书奈费勒",
+            "丛林之国奈费勒",
+            "游戏之国奈费勒",
+            "千廊之国奈费勒",
+            "征服之末奈费勒",
+            "大敌奈费勒",
+            "黑魔法师奈费勒",
+            "空王座奈费勒"
+        ];
+        
+        // 打乱数组顺序的函数
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+        
+        // 打乱姓名列表
+        const shuffledListA = shuffleArray(listA);
+        const shuffledListB = shuffleArray(listB);
+        
+        // 获取DOM元素
+        const boxA = document.getElementById('boxA');
+        const boxB = document.getElementById('boxB');
+        const nameA = boxA.querySelector('.name-text');
+        const nameB = boxB.querySelector('.name-text');
+        const toggleButton = document.getElementById('toggleButton');
+        
+        // 初始状态
+        let isRunning = false;
+        let intervalA;
+        let intervalB;
+        const scrollSpeed = 50; // 非常快的固定滚动速度（毫秒）
+        
+        // 显示随机名字
+        function showRandomName(list, element) {
+            const randomIndex = Math.floor(Math.random() * list.length);
+            element.textContent = list[randomIndex];
+        }
+        
+        // 开始滚动名字
+        function startRolling() {
+            // 重置样式
+            resetStyles();
+            
+            // 设置滚动间隔 - 速度非常快
+            intervalA = setInterval(() => {
+                showRandomName(shuffledListA, nameA);
+            }, scrollSpeed);
+            
+            intervalB = setInterval(() => {
+                showRandomName(shuffledListB, nameB);
+            }, scrollSpeed);
+            
+            // 更新按钮状态和文字为"嘉宾匹配中……"
+            toggleButton.innerHTML = '<i class="fa fa-circle-o-notch fa-spin mr-2"></i>嘉宾匹配中……';
+            toggleButton.classList.remove('bg-primary');
+            toggleButton.classList.add('bg-accent', 'hover:bg-accent/80', 'focus:ring-accent/50');
+            isRunning = true;
+        }
+        
+        // 停止滚动名字
+        function stopRolling() {
+            clearInterval(intervalA);
+            clearInterval(intervalB);
+            
+            // 突出显示选中的名字
+            highlightSelected();
+            
+            // 更新按钮状态和文字为"开始换乘"
+            toggleButton.innerHTML = '<i class="fa fa-random mr-2"></i>开始换乘';
+            toggleButton.classList.remove('bg-accent', 'hover:bg-accent/80', 'focus:ring-accent/50');
+            toggleButton.classList.add('bg-primary');
+            isRunning = false;
+        }
+        
+        // 突出显示选中的名字
+        function highlightSelected() {
+            // 盒子样式变化
+            boxA.classList.add('ring-4', 'ring-accent');
+            boxB.classList.add('ring-4', 'ring-accent');
+            
+            // 文字样式变化 - 黑色字体，保持放大效果
+            nameA.classList.add('text-gray-800', 'scale-110');
+            nameB.classList.add('text-gray-800', 'scale-110');
+        }
+        
+        // 重置样式
+        function resetStyles() {
+            // 移除盒子高亮
+            boxA.classList.remove('ring-4', 'ring-accent');
+            boxB.classList.remove('ring-4', 'ring-accent');
+            
+            // 重置文字样式
+            nameA.classList.remove('text-gray-800', 'scale-110');
+            nameB.classList.remove('text-gray-800', 'scale-110');
+        }
+        
+        // 按钮点击事件
+        toggleButton.addEventListener('click', () => {
+            if (isRunning) {
+                stopRolling();
+            } else {
+                startRolling();
+            }
+        });
+        
+        // 初始化显示
+        showRandomName(shuffledListA, nameA);
+        showRandomName(shuffledListB, nameB);
+    </script>
+</body>
+</html>
